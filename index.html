@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <body>
+	<title>Tienda en línea</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<!-- Font Awesome icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+	<!-- Estilos personalizados -->
+<style>body{
+	background-color:#fffffff1;}
+	</style>
+</head>
+
+	<div class="container">
+        <header>
+            <h1 class="text-center my-5">Bienvenido a tienda</h1>
+		<h2 class="text-center my-5"> FEED</h2>
+        </header>
+        <p>Escoje tus productos y toca el boton de carrito para comprar</p>
+		<div class="row">
+			<div class="col-md-4 producto">
+                <img class="card-img-top img-thumbnail" src="img/fiesta0.jpg" alt="Producto 1">
+				<div class="nombre">Camisa FEED edicion 2022</div>
+				<div class="precio">$210.00</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="agregarAlCarrito('Camisa FEED clasic, edicion 2022', 210.00)"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+			</div>
+			<div class="col-md-4 producto">
+                <img class="card-img-top img-thumbnail" src="img/fiesta2.jpg" alt="Producto 1">
+				<div class="nombre">Camisa FEED edicion 2022</div>
+				<div class="precio">$210.00</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="agregarAlCarrito('Camisa FEED edicion 2022', 210.00)"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+			</div>
+            <div class="col-md-4 producto">
+                <img class="card-img-top img-thumbnail" src="img/feed2.jpg" alt="Producto 1">
+				<div class="nombre">Camisa FEED edicion 2023</div>
+				<div class="precio">$210.00</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="agregarAlCarrito('Camisa FEED edicion 2023', 210.00)"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+			</div>
+            <div class="col-md-4 producto">
+                <img class="card-img-top img-thumbnail" src="img/fedd1.jpg" alt="Producto 1">
+				<div class="nombre">Producto 2</div>
+				<div class="precio">$210.00</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="agregarAlCarrito('Producto 2', 210.00)"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+			</div>
+            <div class="col-md-4 producto">
+                <img class="card-img-top img-thumbnail" src="img/feed3.jpg" alt="Producto 1">
+				<div class="nombre">Producto 2</div>
+				<div class="precio">$210.00</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="agregarAlCarrito('Producto 2', 210.00)"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+			</div>
+		
+		</body>
+		</html>
+
+<!-- Carrito de compras -->
+<div class="carrito" onclick="enviarPedido()">
+	Carrito <span class="cantidad">0</span>
+</div>
+
+<!-- Función para agregar productos al carrito -->
+<script>
+	let carrito = [];
+	
+	function agregarAlCarrito(nombre, precio) {
+		carrito.push({nombre: nombre, precio: precio});
+		actualizarCarrito();
+	}
+	
+	function actualizarCarrito() {
+		let cantidad = carrito.length;
+		document.querySelector('.cantidad').textContent = cantidad;
+	}
+	
+	function enviarPedido() {
+		let mensaje = 'Pedido:\n\n';
+		let total = 0;
+		
+		for (let i = 0; i < carrito.length; i++) {
+			mensaje += carrito[i].nombre + ': $' + carrito[i].precio.toFixed(2) + '\n';
+			total += carrito[i].precio;
+		}
+		
+		mensaje += '\nTotal: $' + total.toFixed(2);
+		let whatsapp = 'https://wa.me/+526563783789?text=' + encodeURIComponent(mensaje);
+		window.open(whatsapp, '_blank');
+		
+		carrito = [];
+		actualizarCarrito();
+	}
+</script>
+
+    
+
+
+<a href="" onclick="window.open('terminos.html', 'Términos y Condiciones', 'width=600,height=400'); return false;">Términos y Condiciones</a>
+</body>
+</html>
